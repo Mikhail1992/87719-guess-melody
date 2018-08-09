@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(() => {
   const KEY_CODE_LEFT = 37;
   const KEY_CODE_RIGHT = 39;
   const screenList = [
@@ -26,12 +26,13 @@
         }
         .arrows__btn {
           background: none;
-          border: 2px solid black;
+          border: 2px solid white;
           padding: 5px 20px;
+          color: white;
         }
       </style>
-      <button class="arrows__btn"><-</button>
-      <button class="arrows__btn">-></button>
+      <button class="arrows__btn arrows__btn_prev"><-</button>
+      <button class="arrows__btn arrows__btn_next">-></button>
     </div>
   `;
 
@@ -68,7 +69,7 @@
   renderScreen(container, activeScreen);
   renderHTML(app, arrows);
 
-  document.addEventListener(`keydown`, function (event) {
+  document.addEventListener(`keydown`, (event) => {
     if (event.keyCode === KEY_CODE_LEFT) {
       renderPreviousScreen();
     }
@@ -77,13 +78,13 @@
     }
   });
 
-  const buttonArrowsWrapper = document.querySelector(`.arrows__wrap`);
-  buttonArrowsWrapper.addEventListener(`click`, function (event) {
-    if (event.target.innerText === `<-`) {
-      renderPreviousScreen();
-    }
-    if (event.target.innerText === `->`) {
-      renderNextScreen();
-    }
+  const buttonPrev = document.querySelector(`.arrows__btn_prev`);
+  buttonPrev.addEventListener(`click`, () => {
+    renderPreviousScreen();
+  });
+
+  const buttonNext = document.querySelector(`.arrows__btn_next`);
+  buttonNext.addEventListener(`click`, () => {
+    renderNextScreen();
   });
 })();
