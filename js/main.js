@@ -1,5 +1,3 @@
-'use strict';
-
 (() => {
   const KEY_CODE_LEFT = 37;
   const KEY_CODE_RIGHT = 39;
@@ -37,10 +35,11 @@
   `;
 
   let activeScreen = 0;
+  const screens = {};
   const checkoutScreen = (screenNumber) => {
-    const screen = document.querySelector(`#${screenList[screenNumber]}`);
-    const clonedScreen = screen.cloneNode(true);
-    return clonedScreen.content;
+    const templateName = screenList[screenNumber];
+    screens[templateName] = screens[templateName] || document.querySelector(`#${templateName}`);
+    return screens[templateName].content;
   };
 
   const renderScreen = (node, screenNumber) => {
@@ -49,17 +48,13 @@
   };
 
   const renderPreviousScreen = () => {
-    if (activeScreen > 0) {
-      activeScreen--;
-      renderScreen(container, activeScreen);
-    }
+    activeScreen > 0 ? activeScreen-- : activeScreen;
+    renderScreen(container, activeScreen);
   };
 
   const renderNextScreen = () => {
-    if (activeScreen < screenList.length - 1) {
-      activeScreen++;
-      renderScreen(container, activeScreen);
-    }
+    activeScreen < screenList.length - 1 ? activeScreen++ : activeScreen;
+    renderScreen(container, activeScreen);
   };
 
   const renderHTML = (parentNode, htmlCode) => {
