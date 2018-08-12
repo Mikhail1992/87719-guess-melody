@@ -1,16 +1,18 @@
+"use strict";
+
 (() => {
   const KEY_CODE_LEFT = 37;
   const KEY_CODE_RIGHT = 39;
-  const screenList = [
-    `welcome`,
-    `game-genre`,
-    `game-artist`,
-    `result-success`,
-    `fail-time`,
-    `fail-tries`,
-    `modal-error`,
-    `modal-confirm`
-  ];
+  const screenList = {
+    'welcome': null,
+    'game-genre': null,
+    'game-artist': null,
+    'result-success': null,
+    'fail-time': null,
+    'fail-tries': null,
+    'modal-error': null,
+    'modal-confirm': null
+  };
   const app = document.querySelector(`.app`);
   const container = app.querySelector(`.main`);
   const arrows = `
@@ -34,12 +36,17 @@
     </div>
   `;
 
+  const setCacheContext = () => {
+    Object.keys(screenList).forEach((item) => {
+      screenList[item] = document.querySelector(`#${item}`).content;
+    });
+  };
+  setCacheContext();
+
   let activeScreen = 0;
-  const screens = {};
   const checkoutScreen = (screenNumber) => {
-    const templateName = screenList[screenNumber];
-    screens[templateName] = screens[templateName] || document.querySelector(`#${templateName}`);
-    return screens[templateName].content;
+    const screenKey = Object.keys(screenList)[screenNumber];
+    return screenList[screenKey].cloneNode(true);
   };
 
   const renderScreen = (node, screenNumber) => {
@@ -48,12 +55,12 @@
   };
 
   const renderPreviousScreen = () => {
-    activeScreen > 0 ? activeScreen-- : activeScreen;
+    activeScreen = activeScreen > 0 ? --activeScreen : Object.keys(screenList).length - 1;
     renderScreen(container, activeScreen);
   };
 
   const renderNextScreen = () => {
-    activeScreen < screenList.length - 1 ? activeScreen++ : activeScreen;
+    activeScreen = activeScreen < Object.keys(screenList).length - 1 ? ++activeScreen : 0;
     renderScreen(container, activeScreen);
   };
 
