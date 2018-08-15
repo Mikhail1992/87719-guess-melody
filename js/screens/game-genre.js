@@ -88,26 +88,29 @@ const handleDisable = () => {
   gameInput.forEach((input) => {
     if (input.checked) {
       isDisabled = !input.checked;
-      return;
     }
   });
 
   buttonSubmit.disabled = isDisabled;
 };
 
-gameInput.forEach((label) => {
-  label.addEventListener(`click`, () => {
+const gameTracks = gameGenreElement.querySelector(`.game__tracks`);
+gameTracks.addEventListener(`click`, (event) => {
+  if (event.target.tagName === `INPUT`) {
     handleDisable();
-  });
+  }
 });
 
+const form = gameGenreElement.querySelector(`.game__tracks`);
 const buttonBack = gameGenreElement.querySelector(`.game__back`);
 buttonBack.addEventListener(`click`, () => {
+  form.reset();
   showScreen(welcomeElement);
 });
 
 buttonSubmit.addEventListener(`click`, () => {
   event.preventDefault();
+  form.reset();
   showScreen(gameArtistElement);
 });
 

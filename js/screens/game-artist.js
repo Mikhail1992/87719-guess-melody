@@ -66,7 +66,6 @@ const gameArtistElement = getElementFromTemplate(`
 `);
 
 const form = gameArtistElement.querySelector(`.game__artist`);
-const answers = form.elements.answer;
 const buttonBack = gameArtistElement.querySelector(`.game__back`);
 buttonBack.addEventListener(`click`, () => {
   showScreen(welcomeElement);
@@ -75,13 +74,13 @@ buttonBack.addEventListener(`click`, () => {
 const resultScreens = [resultSuccessElement, failTimeElement, failTriesElement];
 const randomResultScreen = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
 
-[...answers].forEach((answer) => {
-  answer.addEventListener(`click`, (event) => {
-    event.preventDefault();
-
+form.addEventListener(`click`, (event) => {
+  event.preventDefault();
+  if (event.target.tagName === `IMG`) {
     form.reset();
     showScreen(randomResultScreen());
-  });
+  }
 });
+
 
 export default gameArtistElement;
