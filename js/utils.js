@@ -4,8 +4,22 @@ export const getElementFromTemplate = (template) => {
   return element;
 };
 
-const mainElement = document.querySelector(`.app`);
 export const showScreen = (element) => {
+  const mainElement = document.querySelector(`.app`);
   mainElement.innerHTML = ``;
   mainElement.appendChild(element);
+};
+
+export const sortDesc = (arr) => {
+  return arr.sort((a, b) => {
+    if (a > b) {
+      return -1;
+    }
+
+    if (a < b) {
+      return 1;
+    }
+
+    return 0;
+  });
 };
