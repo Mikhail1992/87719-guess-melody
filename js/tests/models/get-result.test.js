@@ -4,7 +4,7 @@ import getResult from '../../models/get-result';
 const statistics1 = [14, 8, 12, 13, 5];
 const playerResult1 = {
   points: 10,
-  notes: 1,
+  lives: 1,
   time: 2e4,
   isWin: true
 };
@@ -12,7 +12,7 @@ const playerResult1 = {
 const statistics2 = [12, 18, 10, 5, 5];
 const playerResult2 = {
   points: 10,
-  notes: 0,
+  lives: 0,
   time: 2e4,
   isWin: false
 };
@@ -20,7 +20,7 @@ const playerResult2 = {
 const statistics3 = [16, 13, 4, 12, 19, 12];
 const playerResult3 = {
   points: 15,
-  notes: 2,
+  lives: 2,
   time: 0,
   isWin: false
 };
