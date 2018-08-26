@@ -2,7 +2,7 @@ export const INITIAL_GAME = Object.freeze({
   points: 0,
   level: 0,
   lives: 3,
-  time: 100
+  time: 300
 });
 
 const checkoutLevel = (game, level) => {

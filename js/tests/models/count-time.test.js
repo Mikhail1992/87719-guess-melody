@@ -4,9 +4,9 @@ import countTime from '../../models/count-time';
 
 describe(`Calculate time`, () => {
   it(`should return time count`, () => {
-    assert.equal(countTime(INITIAL_GAME, 100).time, 0);
-    assert.equal(countTime(INITIAL_GAME, 0).time, 100);
-    assert.equal(countTime(INITIAL_GAME, 20).time, 80);
+    assert.equal(countTime(INITIAL_GAME, 300).time, 0);
+    assert.equal(countTime(INITIAL_GAME, 0).time, 300);
+    assert.equal(countTime(INITIAL_GAME, 20).time, 280);
   });
 
   it(`should not allow set negative values`, () => {

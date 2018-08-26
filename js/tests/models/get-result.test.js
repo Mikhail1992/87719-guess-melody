@@ -5,7 +5,7 @@ const statistics1 = [14, 8, 12, 13, 5];
 const playerResult1 = {
   points: 10,
   lives: 1,
-  time: 2e4,
+  time: 200,
   isWin: true
 };
 
@@ -13,7 +13,7 @@ const statistics2 = [12, 18, 10, 5, 5];
 const playerResult2 = {
   points: 10,
   lives: 0,
-  time: 2e4,
+  time: 200,
   isWin: false
 };
 

@@ -1,5 +1,5 @@
 const getPoints = (listAnswers, notes = 3) => {
-  if (listAnswers.length < 10) {
+  if (listAnswers.length < 10 || !notes) {
     return -1;
   }
 
@@ -10,9 +10,6 @@ const getPoints = (listAnswers, notes = 3) => {
     } else if (!item.isSuccess) {
       points = -2;
       notes--;
-    }
-    if (!notes) {
-      return -1;
     }
 
     return sum + points;
