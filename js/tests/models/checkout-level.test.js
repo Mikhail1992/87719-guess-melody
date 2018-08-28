@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import checkoutLevel, {INITIAL_GAME} from '../../models/checkout-level';
+import {INITIAL_GAME} from '../../models/checkout-level';
 
 describe(`Checkout current level`, () => {
   it(`should update level of the game`, () => {

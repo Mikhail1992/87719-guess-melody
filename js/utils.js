@@ -13,3 +13,11 @@ export const showScreen = (element) => {
 export const sortDesc = (arr) => {
   return arr.sort((a, b) => a - b);
 };
+
+export const getNumberFirstZero = (num) => {
+  if (typeof num !== `number`) {
+    throw new Error(`num is not a number`);
+  }
+
+  return num < 10 ? `0${num}` : num;
+}
