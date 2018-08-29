@@ -1,6 +1,5 @@
 import {getElementFromTemplate, showScreen} from '../utils';
-import gameGenreElement from './game-genre';
-
+import renderScreen from './game';
 
 const welcomeElement = getElementFromTemplate(`
   <section class="welcome">
@@ -17,6 +16,6 @@ const welcomeElement = getElementFromTemplate(`
 `);
 
 const buttonPlay = welcomeElement.querySelector(`.welcome__button`);
-buttonPlay.addEventListener(`click`, ()=> showScreen(gameGenreElement));
+buttonPlay.addEventListener(`click`, ()=> showScreen(renderScreen));
 
 export default welcomeElement;

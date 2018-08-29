@@ -1,3 +1,5 @@
+import {getRandomInt} from '../utils';
+
 export const INITIAL_GAME = Object.freeze({
   points: 0,
   level: 0,
@@ -49,6 +51,92 @@ export const mocksTracks = [
     genre: `Electronic`
   }
 ];
+
+const levelQuestions = [
+  {
+    id: 1,
+    title: `Выберите поп треки`,
+    type: `tracks`,
+    tracks: [mocksTracks[0], mocksTracks[1], mocksTracks[2], mocksTracks[4]],
+    answers: [4]
+  },
+  {
+    id: 2,
+    title: `Выберите электро треки`,
+    type: `tracks`,
+    tracks: [mocksTracks[0], mocksTracks[1], mocksTracks[5], mocksTracks[3]],
+    answers: [2]
+  },
+  {
+    id: 3,
+    title: `Выберите R&B треки`,
+    type: `tracks`,
+    tracks: [mocksTracks[2], mocksTracks[3], mocksTracks[4], mocksTracks[1]],
+    answers: [1]
+  },
+  {
+    id: 4,
+    title: `Выберите рок треки`,
+    type: `tracks`,
+    tracks: [mocksTracks[1], mocksTracks[4], mocksTracks[2], mocksTracks[0]],
+    answers: [0]
+  },
+  {
+    id: 5,
+    title: `Выберите джаз треки`,
+    type: `tracks`,
+    tracks: [mocksTracks[0], mocksTracks[1], mocksTracks[2], mocksTracks[3]],
+    answers: [1]
+  },
+  {
+    id: 6,
+    title: `Кто исполняет эту песню?`,
+    type: `artists`,
+    artists: [mocksTracks[1], mocksTracks[0], mocksTracks[2]],
+    answers: [0]
+  },
+  {
+    id: 7,
+    title: `Кто исполняет эту песню?`,
+    type: `artists`,
+    artists: [mocksTracks[1], mocksTracks[2], mocksTracks[4]],
+    answers: [1]
+  },
+  {
+    id: 8,
+    title: `Кто исполняет эту песню?`,
+    type: `artists`,
+    artists: [mocksTracks[5], mocksTracks[1], mocksTracks[3]],
+    answers: [2]
+  },
+  {
+    id: 9,
+    title: `Кто исполняет эту песню?`,
+    type: `artists`,
+    artists: [mocksTracks[1], mocksTracks[2], mocksTracks[4]],
+    answers: [2]
+  },
+  {
+    id: 10,
+    title: `Кто исполняет эту песню?`,
+    type: `artists`,
+    artists: [mocksTracks[0], mocksTracks[3], mocksTracks[5]],
+    answers: [0]
+  },
+];
+
+const generateLevel = (levelsData) => {
+  const randomQuestion = getRandomInt(0, levelsData.length - 1);
+  const currentQuestion = levelsData[randomQuestion];
+
+  return currentQuestion;
+};
+
+export const levels = {
+  'level-0': generateLevel(levelQuestions),
+  'level-1': generateLevel(levelQuestions),
+  'level-2': generateLevel(levelQuestions),
+};
 
 const checkoutLevel = (game, level) => {
   if (typeof level !== `number`) {
