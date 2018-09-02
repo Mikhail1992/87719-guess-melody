@@ -7,7 +7,7 @@ const gameGenreElement = (data = {}) => `
       <h2 class="game__title">Выберите инди-рок треки</h2>
       <form class="game__tracks">
 
-        ${data.tracks && data.tracks.map((track, index) => `
+        ${data.setDestination && data.setDestination((track, index) => `
           <div class="track">
             <button class="track__button track__button--play" type="button"></button>
             <div class="track__status">
@@ -18,7 +18,7 @@ const gameGenreElement = (data = {}) => `
               <label class="game__check" for="answer-${index}">Отметить</label>
             </div>
           </div>
-        `).join(``)}
+        `)}
 
         <button class="game__submit button" type="submit">Ответить</button>
       </form>

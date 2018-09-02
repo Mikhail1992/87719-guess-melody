@@ -1,6 +1,8 @@
 import {getNumberFirstZero} from '../utils';
+import {getElementFromTemplate, showScreen} from '../utils';
+import welcomeElement from './welcome';
 
-const header = (data) => `
+const header = (data = {}) => getElementFromTemplate(`
   <header class="game__header">
     <a class="game__back" href="#">
       <span class="visually-hidden">Сыграть ещё раз</span>
@@ -21,6 +23,11 @@ const header = (data) => `
       ${new Array(data.lives).fill(`<div class="wrong"></div>`).join(``)}
     </div>
   </header>
-`;
+`);
+
+const buttonBack = header().querySelector(`.game__back`);
+buttonBack.addEventListener(`click`, () => {
+  showScreen(welcomeElement);
+});
 
 export default header;

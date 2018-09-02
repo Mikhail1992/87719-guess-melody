@@ -1,5 +1,6 @@
 import {getElementFromTemplate, showScreen} from '../utils';
-import renderScreen from './game';
+import {renderScreen} from './game';
+import {INITIAL_GAME} from '../models/checkout-level';
 
 const welcomeElement = getElementFromTemplate(`
   <section class="welcome">
@@ -16,6 +17,6 @@ const welcomeElement = getElementFromTemplate(`
 `);
 
 const buttonPlay = welcomeElement.querySelector(`.welcome__button`);
-buttonPlay.addEventListener(`click`, ()=> showScreen(renderScreen));
+buttonPlay.addEventListener(`click`, ()=> showScreen(renderScreen(INITIAL_GAME)));
 
 export default welcomeElement;

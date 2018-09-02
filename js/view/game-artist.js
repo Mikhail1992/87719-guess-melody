@@ -13,7 +13,7 @@ const gameArtistElement = (data = {}) => `
       </div>
       <form class="game__artist">
 
-        ${data.artists && data.artists.map((artist, index) => `
+        ${data.setDestination && data.setDestination((artist, index) => `
           <div class="artist">
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-${index}" id="answer-${index}">
             <label class="artist__name" for="answer-${index}">
@@ -21,7 +21,7 @@ const gameArtistElement = (data = {}) => `
               ${artist.artist}
             </label>
           </div>
-        `).join(``)}
+        `)}
 
       </form>
     </section>
