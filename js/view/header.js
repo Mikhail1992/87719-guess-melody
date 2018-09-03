@@ -1,8 +1,8 @@
 import {getNumberFirstZero} from '../utils';
-import {getElementFromTemplate, showScreen} from '../utils';
-import welcomeElement from './welcome';
+import {getElementFromTemplate} from '../utils';
+import {INITIAL_GAME} from '../models/checkout-level';
 
-const header = (data = {}) => getElementFromTemplate(`
+const header = (data = INITIAL_GAME) => getElementFromTemplate(`
   <header class="game__header">
     <a class="game__back" href="#">
       <span class="visually-hidden">Сыграть ещё раз</span>
@@ -14,7 +14,7 @@ const header = (data = {}) => getElementFromTemplate(`
     </svg>
 
     <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-      <span class="timer__mins">${getNumberFirstZero(Math.floor(data.time / 60))}</span>
+      <span class="timer__mins">${getNumberFirstZero(Math.floor(data.time / 60 / 100))}</span>
       <span class="timer__dots">:</span>
       <span class="timer__secs">${getNumberFirstZero(data.time - Math.floor(data.time / 60) * 60)}</span>
     </div>
@@ -24,10 +24,5 @@ const header = (data = {}) => getElementFromTemplate(`
     </div>
   </header>
 `);
-
-const buttonBack = header().querySelector(`.game__back`);
-buttonBack.addEventListener(`click`, () => {
-  showScreen(welcomeElement);
-});
 
 export default header;

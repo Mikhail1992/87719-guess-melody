@@ -1,10 +1,9 @@
-import {getElementFromTemplate, showScreen} from '../utils';
-import gameArtistElement from './game-artist';
+import {INITIAL_GAME} from '../models/checkout-level';
 
-const gameGenreElement = (data = {}) => `
+const gameGenreElement = (data = INITIAL_GAME) => `
   <section class="game game--genre">
     <section class="game__screen">
-      <h2 class="game__title">Выберите инди-рок треки</h2>
+      <h2 class="game__title">${data.title}</h2>
       <form class="game__tracks">
 
         ${data.setDestination && data.setDestination((track, index) => `
@@ -25,34 +24,5 @@ const gameGenreElement = (data = {}) => `
     </section>
   </section>
 `;
-
-const gameGenre = getElementFromTemplate(gameGenreElement());
-const gameInput = gameGenre.querySelectorAll(`.game__input`);
-const buttonSubmit = gameGenre.querySelector(`.game__submit`);
-const handleDisable = () => {
-  let isDisabled = true;
-  gameInput.forEach((input) => {
-    if (input.checked) {
-      isDisabled = !input.checked;
-    }
-  });
-
-  buttonSubmit.disabled = isDisabled;
-};
-
-const gameTracks = gameGenre.querySelector(`.game__tracks`);
-gameTracks.addEventListener(`click`, (event) => {
-  if (event.target.tagName === `INPUT`) {
-    handleDisable();
-  }
-});
-
-buttonSubmit.addEventListener(`click`, () => {
-  event.preventDefault();
-  gameTracks.reset();
-  showScreen(gameArtistElement);
-});
-
-handleDisable();
 
 export default gameGenreElement;

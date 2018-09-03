@@ -1,9 +1,6 @@
-import {getElementFromTemplate, showScreen} from '../utils';
-import resultSuccessElement from './result-success';
-import failTimeElement from './fail-time';
-import failTriesElement from './fail-tries';
+import {INITIAL_GAME} from '../models/checkout-level';
 
-const gameArtistElement = (data = {}) => `
+const gameArtistElement = (data = INITIAL_GAME) => `
   <section class="game game--artist">
     <section class="game__screen">
       <h2 class="game__title">Кто исполняет эту песню?</h2>
@@ -27,18 +24,5 @@ const gameArtistElement = (data = {}) => `
     </section>
   </section>
 `;
-
-const gameArtist = getElementFromTemplate(gameArtistElement());
-const form = gameArtist.querySelector(`.game__artist`);
-const resultScreens = [resultSuccessElement, failTimeElement, failTriesElement];
-const randomResultScreen = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
-
-form.addEventListener(`click`, (event) => {
-  event.preventDefault();
-  if (event.target.tagName === `IMG`) {
-    form.reset();
-    showScreen(randomResultScreen());
-  }
-});
 
 export default gameArtistElement;

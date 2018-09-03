@@ -2,9 +2,9 @@ export const INITIAL_GAME = Object.freeze({
   points: 0,
   level: 0,
   lives: 3,
-  time: 300
+  time: 3e5
 });
-
+export const currentGame = Object.assign({}, INITIAL_GAME);
 const mocksTracks = [
   {
     artist: `Kevin MacLeod`,
