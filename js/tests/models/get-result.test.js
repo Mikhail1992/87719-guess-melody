@@ -6,7 +6,7 @@ const playerResult1 = {
   points: 10,
   lives: 1,
   time: 200,
-  isWin: true
+  level: 9,
 };
 
 const statistics2 = [12, 18, 10, 5, 5];
@@ -14,7 +14,7 @@ const playerResult2 = {
   points: 10,
   lives: 0,
   time: 200,
-  isWin: false
+  level: 8,
 };
 
 const statistics3 = [16, 13, 4, 12, 19, 12];
@@ -22,7 +22,7 @@ const playerResult3 = {
   points: 15,
   lives: 2,
   time: 0,
-  isWin: false
+  level: 8
 };
 
 describe(`Displays the results of the player`, () => {

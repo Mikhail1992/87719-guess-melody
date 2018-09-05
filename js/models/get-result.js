@@ -1,4 +1,5 @@
 import {sortDesc} from '../utils';
+import {levelQuestions} from './checkout-level';
 
 const getUserPlace = (statistics, userPoints) => {
   let userPlace = 1;
@@ -11,10 +12,10 @@ const getUserPlace = (statistics, userPoints) => {
 };
 
 const getResult = (statistics, playerResult) => {
-  const {points, lives, time, isWin} = playerResult;
+  const {points, lives, time, level} = playerResult;
 
   let message = ``;
-  if (isWin) {
+  if (lives > 0 && level === levelQuestions.length - 1 && time > 0) {
     const usersCount = statistics.length + 1;
     const fullStatistics = sortDesc([points, ...statistics]);
     const userPlace = getUserPlace(fullStatistics, points);

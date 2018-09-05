@@ -6,7 +6,7 @@ const gameArtistElement = (data = INITIAL_GAME) => `
       <h2 class="game__title">Кто исполняет эту песню?</h2>
       <div class="game__track">
         <button class="track__button track__button--play" type="button"></button>
-        <audio></audio>
+        <audio src="${data[data.type].find((item) => item.correct).src}"></audio>
       </div>
       <form class="game__artist">
 

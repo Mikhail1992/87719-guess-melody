@@ -4,6 +4,7 @@ import {getElementFromTemplate, showScreen} from '../utils';
 import checkoutLevel, {getNextLevel, currentGame, INITIAL_GAME, levelQuestions} from '../models/checkout-level';
 import header from './header';
 import resultSuccessElement from './result-success';
+import getResult from '../models/get-result';
 import welcomeElement from './welcome';
 import countTime from '../models/count-time';
 import getPoints from '../models/get-points';
@@ -28,7 +29,7 @@ export const renderScreen = (state) => {
     container.appendChild(header(currentGame));
     container.appendChild(getElementFromTemplate(gameTemplate(templateData)));
   } else {
-    container.appendChild(resultSuccessElement);
+    container.appendChild(getElementFromTemplate(resultSuccessElement(getResult([], currentGame))));
     currentGame.level = INITIAL_GAME.level;
   }
 
@@ -96,5 +97,42 @@ export const renderScreen = (state) => {
       }
     });
     handleDisable();
+  }
+
+  const togglePlay = (audio) => {
+    if (audio.classList.contains(`active`)) {
+      audio.classList.remove(`active`);
+      audio.pause();
+    } else {
+      audio.classList.add(`active`);
+      audio.play();
+    }
+  };
+
+  const toggleButtonPlay = (currentBtnNode) => {
+    if (currentBtnNode.classList.contains(`track__button--play`)) {
+      currentBtnNode.classList.remove(`track__button--play`);
+      currentBtnNode.classList.add(`track__button--pause`);
+    } else {
+      currentBtnNode.classList.add(`track__button--play`);
+      currentBtnNode.classList.remove(`track__button--pause`);
+    }
+  };
+
+  if (gameTracks) {
+    gameTracks.addEventListener(`click`, (evt) => {
+      if (evt.target.tagName === `BUTTON`) {
+        const audio = evt.target.closest(`.track`).querySelector(`audio`);
+        togglePlay(audio);
+        toggleButtonPlay(evt.target);
+      }
+    });
+  }
+
+  const restartButton = document.querySelector(`.result__replay`);
+  if (restartButton) {
+    restartButton.addEventListener(`click`, () => {
+      showScreen(welcomeElement);
+    });
   }
 };
