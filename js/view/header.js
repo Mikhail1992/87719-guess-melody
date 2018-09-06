@@ -14,7 +14,7 @@ const header = (data = INITIAL_GAME) => getElementFromTemplate(`
     </svg>
 
     <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-      <span class="timer__mins">${getNumberFirstZero(Math.floor(data.time / 60 / 100))}</span>
+      <span class="timer__mins">${getNumberFirstZero(Math.floor(data.time / 60 / 1000))}</span>
       <span class="timer__dots">:</span>
       <span class="timer__secs">${getNumberFirstZero(data.time - Math.floor(data.time / 60) * 60)}</span>
     </div>
